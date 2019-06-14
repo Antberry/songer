@@ -1,9 +1,7 @@
 package com.yadayada1z2a.firstWebApp;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 
 @Entity
@@ -17,6 +15,9 @@ public class Album {
     Integer songCount;
     Integer lengthInSecs;
     String imgUrl;
+
+    @OneToMany(mappedBy = "album")
+    List<Song> song;
 
     public Album () {}
 
@@ -68,5 +69,8 @@ public class Album {
         this.lengthInSecs = lengthInSecs;
     }
 
+    public List<Song> getSong() {
+        return song;
+    }
 }
 
